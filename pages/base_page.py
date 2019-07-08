@@ -31,10 +31,20 @@ class BasePage:
         except AttributeError:
             print("%s 页面中未找到 %s 元素" % (self, locator))
 
+    def click(self, locator):
+        """封装click()方法"""
+        self.find_element(*locator).click()
+
 
 if __name__ == '__main__':
-    dr = webdriver.Chrome()  # 初始化chrome浏览器实例
-    dr.maximize_window()  # 浏览器最大化
-    dr.get('https://www.baidu.com')  # 打开百度首页
-    test = dr.find_element_by_id('kw')  # 通过id属性定位输入框
-    test.send_keys('测试一下')  # 输入测试一下
+    dr = webdriver.Chrome("D:/soft/49chrome/Chrome/chromedriver.exe")
+    bp = BasePage(dr)
+    dr.maximize_window()
+    dr.get('https://www.baidu.com')
+    time.sleep(5)
+    elemn= ['id', "kw"]
+    bp.send_keys(elemn,"测试一下")
+    bp.click(['id','su'])
+
+
+
