@@ -8,7 +8,7 @@ class Locaors:
     # 元素定位器
     login_page_locators = {
         "username": (By.ID, "name"),
-        "password": (By.XPATH, "'//input[@placeholder='请输入密码']'"),
+        "password": (By.XPATH, "//input[@placeholder='请输入密码']"),
         'login_button': (By.XPATH, "//span[text()='登 录']")
     }
 

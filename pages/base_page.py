@@ -14,6 +14,10 @@ class BasePage:
     def __init__(self, driver):
         self.driver = driver
 
+    def open(self,url):
+        self.driver.get(url)
+        self.driver.maximize_window()
+
     def find_element(self, *locator):
         try:
             element = WebDriverWait(self.driver, 30).until(EC.presence_of_element_located(locator))
@@ -21,7 +25,7 @@ class BasePage:
         except NoSuchElementException:
             print("%s 页面中未能找到 %s 元素" % (self, locator))
 
-    def send_keys(self, locator, value, clear_first=True):
+    def send_keys(self, locator, value, clear_first=False):
         """封装send_keys()方法"""
         try:
             # locator = getattr(self, "_%s"% locator)
